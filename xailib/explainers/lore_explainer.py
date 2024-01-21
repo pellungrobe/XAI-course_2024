@@ -1,9 +1,9 @@
 from xailib.xailib_tabular import TabularExplainer, TabularExplanation
 from xailib.models.bbox import AbstractBBox
 import pandas as pd
-from externals.lore.datamanager import prepare_dataset
+from externals import prepare_dataset
 from externals.lore.lore.lorem import LOREM
-from externals.lore.lore.explanation import ExplanationEncoder
+from externals import ExplanationEncoder
 import json
 from IPython.display import HTML
 
