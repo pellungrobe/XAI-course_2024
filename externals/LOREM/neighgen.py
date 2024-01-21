@@ -262,9 +262,9 @@ class GeneticGenerator(NeighborhoodGenerator):
 
         y = self.bb_predict(x.reshape(1, -1))[0]
         y1 = self.bb_predict(x1.reshape(1, -1))[0]
-        if(y.shape == ()):
+        if y.shape == ():
             y = self.bb_predict(x.reshape(1, -1))
-        if(y1.shape == ()):
+        if y1.shape == ():
             y1 = self.bb_predict(x1.reshape(1, -1))
 
         target_similarity_score = 1.0 - hamming(y, y1)
@@ -281,9 +281,9 @@ class GeneticGenerator(NeighborhoodGenerator):
 
         y = self.bb_predict(x.reshape(1, -1))[0]
         y1 = self.bb_predict(x1.reshape(1, -1))[0]
-        if(y.shape == ()):
+        if y.shape == ():
             y = self.bb_predict(x.reshape(1, -1))
-        if(y1.shape == ()):
+        if y1.shape == ():
             y1 = self.bb_predict(x1.reshape(1, -1))
 
         target_similarity_score = 1.0 - hamming(y, y1)
@@ -320,6 +320,10 @@ class GeneticProbaGenerator(GeneticGenerator):
 
         y = self.bb_predict_proba(x.reshape(1, -1))[0]
         y1 = self.bb_predict_proba(x1.reshape(1, -1))[0]
+        if y.shape == ():
+            y = self.bb_predict_proba(x.reshape(1, -1))
+        if y1.shape == ():
+            y1 = self.bb_predict_proba(x1.reshape(1, -1))
 
         # target_similarity_score = np.sum(np.abs(y - y1))
         target_similarity_score = 1.0 - cosine(y, y1)
@@ -334,6 +338,11 @@ class GeneticProbaGenerator(GeneticGenerator):
 
         y = self.bb_predict_proba(x.reshape(1, -1))[0]
         y1 = self.bb_predict_proba(x1.reshape(1, -1))[0]
+
+        if y.shape == ():
+            y = self.bb_predict_proba(x.reshape(1, -1))
+        if y1.shape == ():
+            y1 = self.bb_predict_proba(x1.reshape(1, -1))
 
         # target_similarity_score = np.sum(np.abs(y - y1))
         target_similarity_score = 1.0 - cosine(y, y1)
