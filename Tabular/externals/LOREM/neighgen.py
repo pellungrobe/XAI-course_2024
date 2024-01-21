@@ -254,6 +254,7 @@ class GeneticGenerator(NeighborhoodGenerator):
         return z,
 
     def fitness_equal(self, x, x1):
+
         feature_similarity_score = 1.0 - cdist(x.reshape(1, -1), x1.reshape(1, -1), metric=self.metric).ravel()[0]
         # feature_similarity = feature_similarity_score if feature_similarity_score >= self.eta1 else 0.0
         feature_similarity = sigmoid(feature_similarity_score) if feature_similarity_score < 1.0 else 0.0
@@ -261,6 +262,10 @@ class GeneticGenerator(NeighborhoodGenerator):
 
         y = self.bb_predict(x.reshape(1, -1))[0]
         y1 = self.bb_predict(x1.reshape(1, -1))[0]
+        if(y.shape == ()):
+            y = self.bb_predict(x.reshape(1, -1))
+        if(y1.shape == ()):
+            y1 = self.bb_predict(x1.reshape(1, -1))
 
         target_similarity_score = 1.0 - hamming(y, y1)
         # target_similarity = target_similarity_score if target_similarity_score >= self.eta2 else 0.0
@@ -276,6 +281,10 @@ class GeneticGenerator(NeighborhoodGenerator):
 
         y = self.bb_predict(x.reshape(1, -1))[0]
         y1 = self.bb_predict(x1.reshape(1, -1))[0]
+        if(y.shape == ()):
+            y = self.bb_predict(x.reshape(1, -1))
+        if(y1.shape == ()):
+            y1 = self.bb_predict(x1.reshape(1, -1))
 
         target_similarity_score = 1.0 - hamming(y, y1)
         # target_similarity = target_similarity_score if target_similarity_score < self.eta2 else 0.0
