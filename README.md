@@ -1,6 +1,3 @@
 # XAI-course_2024
-Repository for the XAI Course of Prof. Fosca Giannotti
-
-Fork of the original By Francesca Naretto and Francesco Bodria
-
-Refactoring, bug fixes, and new hands-on by Roberto Pellungrini.
+Repository for the XAI-lib used in the Course of Prof. Fosca Giannotti
+This minimal version was created and tested for newer python versions and environments by Roberto Pellungrini
