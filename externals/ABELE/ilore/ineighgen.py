@@ -330,6 +330,10 @@ class ImageGeneticAdversarialGeneratorLatent(ImageAdversarialGeneratorLatent):
         y = self.bb_predict(self.autoencoder.decode(np.array([x])))[0]
         y1 = self.bb_predict(self.autoencoder.decode(np.array([x1])))[0]
         # print(y, y1)
+        if y.shape == ():
+            y = self.bb_predict(self.autoencoder.decode(np.array([x])))
+        if y1.shape == ():
+            y1 = self.bb_predict(self.autoencoder.decode(np.array([x1])))
 
         target_similarity_score = 1.0 - hamming(y, y1)
         target_similarity = sigmoid(target_similarity_score)
@@ -345,6 +349,10 @@ class ImageGeneticAdversarialGeneratorLatent(ImageAdversarialGeneratorLatent):
         y = self.bb_predict(self.autoencoder.decode(np.array([x])))[0]
         y1 = self.bb_predict(self.autoencoder.decode(np.array([x1])))[0]
         # print(y, y1)
+        if y.shape == ():
+            y = self.bb_predict(self.autoencoder.decode(np.array([x])))
+        if y1.shape == ():
+            y1 = self.bb_predict(self.autoencoder.decode(np.array([x1])))
 
         target_similarity_score = 1.0 - hamming(y, y1)
         target_similarity = 1.0 - sigmoid(target_similarity_score)
@@ -404,6 +412,10 @@ class ImageProbaGeneticAdversarialGeneratorLatent(ImageGeneticAdversarialGenerat
         y1 = self.bb_predict_proba(self.autoencoder.decode(np.array([x1])))[0]
         # print(self.bb_predict_proba(self._img2bb(x))[0])
         # print(self.bb_predict_proba(self._img2bb(x1))[0])
+        if y.shape == ():
+            y = self.bb_predict_proba(self.autoencoder.decode(np.array([x])))
+        if y1.shape == ():
+            y1 = self.bb_predict_proba(self.autoencoder.decode(np.array([x1])))
 
         target_similarity_score = 1.0 - cosine(y, y1)
         target_similarity = sigmoid(target_similarity_score)
