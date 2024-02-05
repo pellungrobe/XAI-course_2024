@@ -130,6 +130,9 @@ class LimeXAIImageExplainer(ImageExplainer):
                                                    top_labels=top_labels,
                                                    hide_color=0,
                                                    num_samples=num_samples)
+        ind = exp.top_labels[0]
+        dict_heatmap = dict(exp.local_exp[ind])
+        exp.heatmap = np.vectorize(dict_heatmap.get)(exp.segments)
         return exp
     
     def plot_lime_values(self, image, explanation, figsize=(15,5)):
