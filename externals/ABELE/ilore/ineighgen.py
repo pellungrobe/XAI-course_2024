@@ -432,6 +432,10 @@ class ImageProbaGeneticAdversarialGeneratorLatent(ImageGeneticAdversarialGenerat
         y = self.bb_predict_proba(self.autoencoder.decode(np.array([x])))[0]
         y1 = self.bb_predict_proba(self.autoencoder.decode(np.array([x1])))[0]
         # print(y, y1)
+        if y.shape == ():
+            y = self.bb_predict_proba(self.autoencoder.decode(np.array([x])))
+        if y1.shape == ():
+            y1 = self.bb_predict_proba(self.autoencoder.decode(np.array([x1])))
 
         target_similarity_score = 1.0 - cosine(y, y1)
         target_similarity = 1.0 - sigmoid(target_similarity_score)
