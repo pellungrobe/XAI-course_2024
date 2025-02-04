@@ -149,7 +149,7 @@ class AdversarialAutoencoderMnist(AdversarialAutoencoder):
         return (X.astype(np.float32) - 127.5) / 127.5
 
     def img_denormalize(self, X):
-        return (X * 127.5 + 127.5).astype(np.int)
+        return (X * 127.5 + 127.5).astype(np.int64)
 
     def build_encoder(self):
 
@@ -214,7 +214,7 @@ class AdversarialAutoencoderCifar10(AdversarialAutoencoder):
         return X.astype(np.float32) / 255.0
 
     def img_denormalize(self, X):
-        return (X * 255).astype(np.int)
+        return (X * 255).astype(np.int64)
 
     def build_encoder(self):
 
