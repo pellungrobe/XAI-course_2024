@@ -7,7 +7,7 @@ from abc import abstractmethod
 
 def save(model, model_name, path):
     model_filename = '%s%s.json' % (path, model_name)
-    weights_filename = '%s%s_weights.weigths.h5' % (path, model_name)
+    weights_filename = '%s%s_weights.weights.h5' % (path, model_name)
     options = {'file_arch': model_filename, 'file_weight': weights_filename}
     json_string = model.to_json()
     open(options['file_arch'], 'w').write(json_string)
@@ -16,7 +16,7 @@ def save(model, model_name, path):
 
 def load(model_name, path):
     model_filename = "%s%s.json" % (path, model_name)
-    weights_filename = "%s%s_weights.weigths.h5" % (path, model_name)
+    weights_filename = "%s%s_weights.weights.h5" % (path, model_name)
     model = model_from_json(open(model_filename, 'r').read())
     model.load_weights(weights_filename)
     return model
